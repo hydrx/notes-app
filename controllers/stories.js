@@ -2,7 +2,7 @@ const Story = require("../models/Story");
 const Entry = require("../models/Entry");
 
 module.exports = {
-    getStory: async (req, res) => {
+    getStories: async (req, res) => {
         try {
             const story = await Story.findById(req.params.id);
             const entries = await Entry.find({story: req.params.id}).sort({ createdAt: "desc" }).lean();
