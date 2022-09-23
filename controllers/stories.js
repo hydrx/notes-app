@@ -2,11 +2,11 @@ const Story = require("../models/Story");
 const Entry = require("../models/Entry");
 
 module.exports = {
-    getStories: async (req, res) => {
+    getStory: async (req, res) => {
         try {
             const story = await Story.findById(req.params.id);
             const entries = await Entry.find({story: req.params.id}).sort({ createdAt: "desc" }).lean();
-            res.render("post.ejs", { story: story, user: req.user, entries: entries });
+            res.render("story.ejs", { story: story, user: req.user, entries: entries });
         } catch (err) {
             console.log(err);
         }

@@ -6,7 +6,7 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 //Post Routes - simplified for now
 router.get("/:id", ensureAuth, storiesController.getStory);
 
-router.post("/createStory", upload.single("file"), storiesController.createStory);
+router.post("/createStory", storiesController.createStory);
 
 router.delete("/deleteStory/:id", storiesController.deleteStory);
 
