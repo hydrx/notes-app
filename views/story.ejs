@@ -16,17 +16,16 @@
             </div>
         </div>
 
-        <!-- Add Comments -->
+        <h2>Entries</h2>
+        <!-- Add Entry -->
         <form action="/entry/createEntry/<%=story._id%>" method="POST">
             <div class="mb-3">
-                <label for="title" class="form-label">Add Entry</label>
+                <label for="entry" class="form-label">Add Entry</label>
                 <input type="text" class="form-control" id="entry" name="entry">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-
-        <!-- Show Comments -->
-        <h2>Entries</h2>
+        <!-- Show Entry -->
         <ul>
             <% for(var i=0; i<entries.length; i++) {%>
                 <li class="col-6 justify-content-between mt-5">
@@ -36,7 +35,7 @@
         </ul>
 
         <div class="col-6 mt-5">
-            <a class="btn btn-primary" href="/story">Return to Stories</a>
+            <a class="btn btn-primary" href="/stories">Return to Stories</a>
         </div>
     </div>
 </div>

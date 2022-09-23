@@ -45,8 +45,8 @@ app.use(passport.session())
 app.use(flash())
 
 app.use('/', mainRoutes)
-app.use('/stories', storyRoutes)
-app.use('/entries', entryRoutes)
+app.use('/story', storyRoutes)
+app.use('/entry', entryRoutes)
 
 app.listen(process.env.PORT, ()=>{
     console.log('Server is running, you better catch it!')
