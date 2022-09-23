@@ -2,6 +2,14 @@ const Story = require("../models/Story");
 const Entry = require("../models/Entry");
 
 module.exports = {
+    getStories: async (req, res) => {
+        try {
+            const stories = await Story.find({user: req.user.id });
+            res.render("stories.ejs", {stories: stories, user: req.user });
+        } catch (err) {
+            console.log(err);
+        }
+    },
     getStory: async (req, res) => {
         try {
             const story = await Story.findById(req.params.id);
