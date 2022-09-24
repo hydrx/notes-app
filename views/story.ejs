@@ -22,7 +22,8 @@
         <ul id="entries">
             <% for(var i=0; i<entries.length; i++) {%>
                 <li class="col-6 justify-content-between mt-5 entry">
-                    <%= entries[i].entry%>
+                    <p><%= entries[i].entry%></p>
+                    <span class="timeStamp"><%= entries[i].createdAt.toLocaleString() %></span>
                 </li>
             <% } %>
         </ul>

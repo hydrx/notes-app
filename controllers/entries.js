@@ -6,6 +6,7 @@ module.exports = {
             await Entry.create({
                 entry: req.body.entry,
                 story: req.params.id,
+                timestamp: req.body.createdAt,
             });
             console.log("Entry has been added!");
             res.redirect("/story/"+req.params.id);
