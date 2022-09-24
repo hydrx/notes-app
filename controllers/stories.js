@@ -13,7 +13,7 @@ module.exports = {
     getStory: async (req, res) => {
         try {
             const story = await Story.findById(req.params.id);
-            const entries = await Entry.find({story: req.params.id}).sort({ createdAt: "desc" }).lean();
+            const entries = await Entry.find({story: req.params.id}).sort({ createdAt: "asc" }).lean();
             res.render("story.ejs", { story: story, user: req.user, entries: entries });
         } catch (err) {
             console.log(err);
