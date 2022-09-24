@@ -20,11 +20,13 @@
         <ul id="entries">
             <% for(var i=0; i<entries.length; i++) {%>
                 <li class="col-6 justify-content-between mt-5 entry">
-                    <p><%= entries[i].entry%></p>
-                    <span class="timeStamp"><%= entries[i].createdAt.toLocaleString() %></span>
-                    <form action="/entry/deleteEntry/<%= entries[i]._id %>?_method=DELETE" method="POST" class="col-3">
-                        <button class="btn btn-primary fa fa-trash" type="submit"></button>
-                    </form>
+                    <p class="entry--content"><%= entries[i].entry%></p>
+                    <section class="options">
+                        <span class="timeStamp"><%= entries[i].createdAt.toLocaleString() %></span>
+                        <form action="/entry/deleteEntry/<%= entries[i]._id %>?_method=DELETE" method="POST" class="col-3">
+                            <button class="btn btn-primary fa fa-trash" type="submit"></button>
+                        </form>
+                    </section>
                 </li>
             <% } %>
         </ul>
