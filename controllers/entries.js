@@ -16,14 +16,14 @@ module.exports = {
     },
      deleteEntry: async (req, res) => {
       try {
-        // Find story by id
+        // Find entry by id
         let entry = await Entry.findById({ _id: req.params.id });
-        // Delete story from db
-        await Entry.remove({ _id: req.params.id });
+        // Delete entry from db
+        await Entry.deleteOne({ _id: req.params.id });
         console.log("Deleted Entry");
-        res.redirect("/story/"+req.params.id);
+        res.redirect("/story/"+entry.story);
       } catch (err) {
-        res.redirect("/story/"+req.params.id);
+        res.redirect("/stories");
       }
     },
 };

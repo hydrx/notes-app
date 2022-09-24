@@ -22,13 +22,16 @@
                 <li class="col-6 justify-content-between mt-5 entry">
                     <p><%= entries[i].entry%></p>
                     <span class="timeStamp"><%= entries[i].createdAt.toLocaleString() %></span>
+                    <form action="/entry/deleteEntry/<%= entries[i]._id %>?_method=DELETE" method="POST" class="col-3">
+                        <button class="btn btn-primary fa fa-trash" type="submit"></button>
+                    </form>
                 </li>
             <% } %>
         </ul>
 
         <!-- Add Entry -->
         <div class="col-6 mt-5">
-            <form action="/entry/createEntry/<%=story._id%>" method="POST">
+            <form action="/entry/createEntry/<%=story.id%>" method="POST">
                 <div class="mb-3">
                     <label for="entry" class="form-label">Add Entry</label>
                     <input type="text" class="form-control" id="entry" name="entry">
