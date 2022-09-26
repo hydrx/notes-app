@@ -23,6 +23,9 @@
                     <p class="entry--content"><%= entries[i].entry%></p>
                     <section class="options">
                         <span class="timeStamp"><%= entries[i].createdAt.toLocaleString() %></span>
+                        <form action="#" method="DELETE" class="col-3">
+                            <button class="btn btn-primary fa fa-edit" type="submit"></button>
+                        </form>
                         <form action="/entry/deleteEntry/<%= entries[i]._id %>?_method=DELETE" method="POST" class="col-3">
                             <button class="btn btn-primary fa fa-trash" type="submit"></button>
                         </form>
