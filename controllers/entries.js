@@ -1,4 +1,5 @@
 const Entry = require("../models/Entry");
+const Story = require("../models/Story");
 
 module.exports = {
     createEntry: async (req, res) => {
@@ -10,6 +11,18 @@ module.exports = {
             });
             console.log("Entry has been added!");
             res.redirect("/story/"+req.params.id);
+        } catch (err) {
+            console.log(err);
+        }
+    },
+    editEntry: async (req, res) => {
+        try {
+            // Find entry by id
+            let entry = await Entry.findById({ _id: req.params.id });
+            // Update story title
+            await Entry.findOneAndUpdate({_id:req.params.id}, {entry: req.body.entry})
+            console.log("Entry has been edited!");
+            res.redirect("/story/"+entry.story);
         } catch (err) {
             console.log(err);
         }
