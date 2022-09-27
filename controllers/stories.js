@@ -31,6 +31,16 @@ module.exports = {
             console.log(err);
         }
     },
+    editStory: async (req, res) => {
+        try {
+            // Update story title
+            await Story.findOneAndUpdate({_id:req.params.id}, {title: req.body.title})
+            console.log("Story has been edited!");
+            res.redirect("/story/"+req.params.id);
+        } catch (err) {
+            console.log(err);
+        }
+    },
     deleteStory: async (req, res) => {
         try {
             // Find story by id

@@ -5,6 +5,29 @@
         <div class="col-6">
             <h2><%= story.title %></h2>
             <div class="row justify-content-between">
+                <!-- Edit button -->
+                <button type="button" class="btn btn-primary fa fa-edit" data-bs-toggle="modal" data-bs-target="#storyModal">
+                </button>
+                <!-- Edit story modal -->
+                <form action="/story/editStory/<%= story.id %>?_method=PUT" method="POST" class="modal fade" id="storyModal" tabindex="-1" aria-labelledby="storyModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="storyModalLabel">Change Story Title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <label for="title" class="form-label">New Title</label>
+                                <input type="text" class="form-control" id="title" name="title">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- Delete button -->
                 <form
                         action="/story/deleteStory/<%= story.id %>?_method=DELETE"
                         method="POST"
@@ -23,7 +46,7 @@
                     <p class="entry--content"><%= entries[i].entry%></p>
                     <section class="options">
                         <span class="timeStamp"><%= entries[i].createdAt.toLocaleString() %></span>
-                        <form action="#" method="DELETE" class="col-3">
+                        <form action="#" method="PUT" class="col-3">
                             <button class="btn btn-primary fa fa-edit" type="submit"></button>
                         </form>
                         <form action="/entry/deleteEntry/<%= entries[i]._id %>?_method=DELETE" method="POST" class="col-3">
