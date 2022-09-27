@@ -8,6 +8,8 @@ router.get("/:id", ensureAuth, storiesController.getStory);
 
 router.post("/createStory", storiesController.createStory);
 
+router.put("/editStory/:id", storiesController.editStory);
+
 router.delete("/deleteStory/:id", storiesController.deleteStory);
 
 module.exports = router;
