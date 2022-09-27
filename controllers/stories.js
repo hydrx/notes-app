@@ -34,9 +34,9 @@ module.exports = {
     editStory: async (req, res) => {
         try {
             // Update story title
-            await Story.findByIdAndUpdate(req.params.id, {title: req.body.title})
+            await Story.findOneAndUpdate({_id:req.params.id}, {title: req.body.title})
             console.log("Story has been edited!");
-            res.redirect("/stories");
+            res.redirect("/story/"+req.params.id);
         } catch (err) {
             console.log(err);
         }
