@@ -21,20 +21,8 @@ module.exports = {
             // Find entry by id
             let entry = await Entry.findById({ _id: req.params.id });
             // Update story title
-            await Entry.findOneAndUpdate({_id:req.params.id}, {entry: req.body.entry})
+            await Entry.findOneAndUpdate({_id:req.params.id}, {entry: req.body.entry, category: req.body.category})
             console.log("Entry has been edited!");
-            res.redirect("/story/"+entry.story);
-        } catch (err) {
-            console.log(err);
-        }
-    },
-    editCategory: async (req, res) => {
-        try {
-            // Find entry by id
-            let entry = await Entry.findById({ _id: req.params.id });
-            // Update story title
-            await Entry.findOneAndUpdate({_id:req.params.id}, {entry: req.body.category})
-            console.log("Category has been edited!");
             res.redirect("/story/"+entry.story);
         } catch (err) {
             console.log(err);

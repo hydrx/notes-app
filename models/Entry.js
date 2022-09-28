@@ -8,7 +8,7 @@ const EntrySchema = new mongoose.Schema({
     category: {
         type: String,
         required: false,
-    }
+    },
     story: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Story",
