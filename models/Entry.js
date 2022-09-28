@@ -5,6 +5,10 @@ const EntrySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    category: {
+        type: String,
+        required: false,
+    }
     story: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Story",
