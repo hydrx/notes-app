@@ -46,6 +46,7 @@
                     <p class="entry--content"><%= entries[i].entry%></p>
                     <section class="options">
                         <span class="timeStamp"><%= entries[i].createdAt.toLocaleString() %></span>
+                        <span class="category"><%= entries[i].category %></span>
                         <!-- Edit Entry Button -->
                         <button type="button" class="btn btn-primary fa fa-edit" data-bs-toggle="modal" data-bs-target="#editEntryModal">
                         </button>
@@ -60,6 +61,8 @@
                                     <div class="modal-body">
                                         <label for="entry" class="form-label">Edit Entry</label>
                                         <input type="text" class="form-control" id="entry" name="entry">
+                                        <label for="category" class="form-label">Edit Category</label>
+                                        <input type="text" class="form-control" id="category" name="category">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -106,6 +109,8 @@
                     <div class="modal-body">
                         <label for="entry" class="form-label">Add Entry</label>
                         <input type="text" class="form-control" id="entry" name="entry">
+                        <label for="category" class="form-label">Add Category</label>
+                        <input type="text" class="form-control" id="category" name="category">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
