@@ -1,5 +1,5 @@
 const Entry = require("../models/Entry");
-const Story = require("../models/Story");
+const Notepad = require("../models/Notepad");
 
 module.exports = {
     createEntry: async (req, res) => {
@@ -7,11 +7,11 @@ module.exports = {
             await Entry.create({
                 entry: req.body.entry,
                 category: req.body.category,
-                story: req.params.id,
+                notepad: req.params.id,
                 timestamp: req.body.createdAt,
             });
             console.log("Entry has been added!");
-            res.redirect("/story/"+req.params.id);
+            res.redirect("/notepad/"+req.params.id);
         } catch (err) {
             console.log(err);
         }
@@ -23,7 +23,7 @@ module.exports = {
             // Update story title
             await Entry.findOneAndUpdate({_id:req.params.id}, {entry: req.body.entry, category: req.body.category})
             console.log("Entry has been edited!");
-            res.redirect("/story/"+entry.story);
+            res.redirect("/notepad/"+entry.notepad);
         } catch (err) {
             console.log(err);
         }
@@ -35,9 +35,9 @@ module.exports = {
         // Delete entry from db
         await Entry.deleteOne({ _id: req.params.id });
         console.log("Deleted Entry");
-        res.redirect("/story/"+entry.story);
+        res.redirect("/notepad/"+entry.notepad);
       } catch (err) {
-        res.redirect("/stories");
+          console.log(err);
       }
     },
 };

@@ -9,8 +9,8 @@
             </div>
 
             <div class="mt-5">
-                <h2>Add a story</h2>
-                <form action="/story/createStory" method="POST">
+                <h2>Create a notepad</h2>
+                <form action="/notepad/createNotepad" method="POST">
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
                         <input type="text" class="form-control" id="title" name="title">
@@ -22,10 +22,10 @@
 
         <div class="col-6">
             <ul class="row list-unstyled">
-                <% for(var i=0; i<stories.length; i++) {%>
+                <% for(var i=0; i<notepads.length; i++) {%>
                     <li class="col-6 justify-content-between mt-5">
-                        <a href="/story/<%= stories[i]._id%>">
-                            <%= stories[i].title%>
+                        <a href="/notepad/<%= notepads[i]._id%>">
+                            <%= notepads[i].title%>
                         </a>
                     </li>
                 <% } %>

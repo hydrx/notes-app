@@ -1,6 +1,6 @@
 const Tag = require("../models/Tag");
 const Entry = require("../models/Entry");
-const Story = require("../models/Story");
+const Notepad = require("../models/Notepad");
 
 module.exports = {
     createTag: async (req, res) => {
@@ -10,7 +10,7 @@ module.exports = {
                 timestamp: req.body.createdAt,
             });
             console.log("Tag has been added!");
-            res.redirect("/story/"+req.params.id);
+            res.redirect("/notepad/"+req.params.id);
         } catch (err) {
             console.log(err);
         }
@@ -19,10 +19,10 @@ module.exports = {
         try {
             // Find entry by id
             let entry = await Entry.findById({ _id: req.params.id });
-            // Update story title
+            // Update tags
             await Tag.findOneAndUpdate({_id:req.params.id}, {tag: req.body.tag})
             console.log("Tag has been edited!");
-            res.redirect("/story/"+entry.story);
+            res.redirect("/notepad/"+entry.notepad);
         } catch (err) {
             console.log(err);
         }
@@ -34,7 +34,7 @@ module.exports = {
         // Delete entry from db
         await Tag.remove({ _id: req.params.id });
         console.log("Deleted Tag");
-        res.redirect("/story/"+entry.story);
+        res.redirect("/notepad/"+entry.notepad);
       } catch (err) {
           console.log(err);
       }

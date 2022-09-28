@@ -9,9 +9,9 @@ const EntrySchema = new mongoose.Schema({
         type: String,
         required: false,
     },
-    story: {
+    notepad: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Story",
+        ref: "Notepad",
     },
     createdAt: {
         type: Date,

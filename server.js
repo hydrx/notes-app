@@ -9,7 +9,7 @@ const flash = require('express-flash')
 const logger = require('morgan')
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
-const storyRoutes = require('./routes/stories')
+const notepadRoutes = require('./routes/notepads')
 const entryRoutes = require('./routes/entries')
 const tagRoutes = require('./routes/tags')
 
@@ -46,7 +46,7 @@ app.use(passport.session())
 app.use(flash())
 
 app.use('/', mainRoutes)
-app.use('/story', storyRoutes)
+app.use('/notepad', notepadRoutes)
 app.use('/entry', entryRoutes)
 app.use('/tag', tagRoutes)
 
