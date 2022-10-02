@@ -45,20 +45,25 @@
                 <li class="col-6 justify-content-between mt-5 entry">
                     <p class="entry--content"><%= entries[i].entry%></p>
                     <section class="options">
+                        <% var entryId = entries[i]._id %>
+                        <span class="temp">Raw ID: <%= entries[i]._id %></span>
+                        <span class="temp">Var ID: <%= entryId %></span>
+                        <span class="temp">index: <%= i %></span>
                         <span class="timeStamp"><%= entries[i].createdAt.toLocaleString() %></span>
                         <span class="category"><%= entries[i].category %></span>
                         <!-- Edit Entry Button -->
                         <button type="button" class="btn btn-primary fa fa-edit" data-bs-toggle="modal" data-bs-target="#editEntryModal">
                         </button>
                         <!-- Edit Entry Modal -->
-                        <form action="/entry/editEntry/<%= entries[i]._id %>?_method=PUT" method="POST" class="modal fade" id="editEntryModal" tabindex="-1" aria-labelledby="editEntryModalLabel" aria-hidden="true">
+                        <form action="/entry/editEntry/<%= entryId %>?_method=PUT" method="POST" class="modal fade" id="editEntryModal" tabindex="-1" aria-labelledby="editEntryModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="editEntryModalLabel">Edit Entry</h5>
+                                        <h5 class="modal-title" id="editEntryModalLabel">Edit Entry <%= entryId %></h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
+                                        <p class="temp">index: <%= i %></p>
                                         <label for="entry" class="form-label">Edit Entry</label>
                                         <input type="text" class="form-control" id="entry" name="entry">
                                         <label for="category" class="form-label">Edit Category</label>
