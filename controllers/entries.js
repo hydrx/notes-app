@@ -20,7 +20,7 @@ module.exports = {
         try {
             // Find entry by id
             let entry = await Entry.findById({ _id: req.params.id });
-            // Update story title
+            // Update entry and category
             await Entry.findOneAndUpdate({_id:req.params.id}, {entry: req.body.entry, category: req.body.category})
             console.log("Entry has been edited!");
             res.redirect("/notepad/"+entry.notepad);
