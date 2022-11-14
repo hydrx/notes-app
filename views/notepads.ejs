@@ -1,14 +1,35 @@
 <%- include('partials/header') -%>
-<div class="container">
-    <div class="row mt-5">
-        <div class="col-6">
-            <div>
+
+<!-- use daisyui sidebar for desktop, drawer for mobile -->
+<div class="drawer drawer-mobile">
+    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content flex flex-col items-center justify-center">
+        <!-- Page content here -->
+        <div class="container mx-auto">
+            <ul>
+                <% for(var i=0; i<notepads.length; i++) {%>
+                    <li>
+                        <a href="/notepad/<%= notepads[i]._id%>">
+                            <%= notepads[i].title%>
+                        </a>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+        <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+
+    </div>
+    <div class="drawer-side">
+        <label for="my-drawer-2" class="drawer-overlay"></label>
+        <div class="menu p-4 w-80 bg-base-100 text-base-content">
+            <!-- Sidebar content here -->
+            <div id="user">
                 <p><strong>User Name</strong>: <%= user.userName %></p>
                 <p><strong>Email</strong>: <%= user.email %></p>
                 <a href="/logout" class="col-3 btn btn-primary">Logout</a>
             </div>
 
-            <div class="mt-5">
+            <div id="create-note">
                 <h2>Create a notepad</h2>
                 <form action="/notepad/createNotepad" method="POST">
                     <div class="mb-3">
@@ -20,19 +41,7 @@
             </div>
         </div>
 
-        <div class="col-6">
-            <ul class="row list-unstyled">
-                <% for(var i=0; i<notepads.length; i++) {%>
-                    <li class="col-6 justify-content-between mt-5">
-                        <a href="/notepad/<%= notepads[i]._id%>">
-                            <%= notepads[i].title%>
-                        </a>
-                    </li>
-                <% } %>
-            </ul>
-        </div>
     </div>
+</div>
 
-</div>
-</div>
 <%- include('partials/footer') -%>
